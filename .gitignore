@@ -25,6 +25,7 @@ __pycache__/
 *.swp
 *.swo
 *~
+.vscode/
 
 # Claude Code
 .claude/
