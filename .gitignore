@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+.venv/
+
+# Environment variables
+.env
+
+# Testing
+.pytest_cache/
+
+# Output files (root level only)
+/presale.ics
+/*.ics
+
+# Build/Deploy
+.aws-sam/
+
+# IDE/Editor
+.idea/
+*.swp
+*.swo
+*~
+
+# Claude Code
+.claude/
+!.claude/*.md
+
+# OS
+.DS_Store
+Thumbs.db
+
+# UV package manager
+uv.lock
+.python-version
+
+# Ruff linter/formatter
+.ruff_cache/

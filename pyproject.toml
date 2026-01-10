@@ -1,0 +1,114 @@
+[project]
+name = "fcsp-presale-extractor"
+version = "1.0.0"
+description = "FC St. Pauli Presale Calendar Extractor - Extracts ticket presale dates from RSS feed"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "feedparser>=6.0.11",
+    "icalendar>=5.0.13",
+    "pytz>=2024.1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.2",
+    "ruff>=0.14.11",
+    "ty>=0.0.11",
+]
+
+[tool.ruff]
+# Target Python 3.13
+target-version = "py313"
+
+# Set line length
+line-length = 100
+
+# Enable pycodestyle (`E`) and Pyflakes (`F`) codes by default
+# Plus other useful rule sets
+lint.select = [
+    "E",      # pycodestyle errors
+    "W",      # pycodestyle warnings
+    "F",      # pyflakes
+    "I",      # isort
+    "N",      # pep8-naming
+    "UP",     # pyupgrade
+    "B",      # flake8-bugbear
+    "C4",     # flake8-comprehensions
+    "DTZ",    # flake8-datetimez
+    "T10",    # flake8-debugger
+    "ISC",    # flake8-implicit-str-concat
+    "ICN",    # flake8-import-conventions
+    "PIE",    # flake8-pie
+    "PT",     # flake8-pytest-style
+    "Q",      # flake8-quotes
+    "RSE",    # flake8-raise
+    "RET",    # flake8-return
+    "SIM",    # flake8-simplify
+    "TID",    # flake8-tidy-imports
+    "ARG",    # flake8-unused-arguments
+    "PTH",    # flake8-use-pathlib
+    "PL",     # pylint
+    "RUF",    # ruff-specific rules
+]
+
+# Ignore specific rules
+lint.ignore = [
+    "E501",    # line too long (handled by formatter)
+    "PLR0913", # too many arguments
+    "DTZ001",  # datetime without tzinfo (we use pytz.localize pattern)
+]
+
+# Allow autofix for all enabled rules
+lint.fixable = ["ALL"]
+lint.unfixable = []
+
+# Exclude common directories
+exclude = [
+    ".git",
+    ".venv",
+    "venv",
+    "__pycache__",
+    ".pytest_cache",
+    ".aws-sam",
+    "build",
+    "dist",
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Ignore specific rules in test files
+"test_*.py" = ["PLR2004", "S101", "ARG"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["fcsp_presale_extractor"]
+
+[tool.ty.environment]
+# Python version for type checking
+python-version = "3.13"
+
+[tool.ty.src]
+# Files to include in type checking
+include = ["fcsp_presale_extractor.py", "test_extractor.py"]
+# Directories to exclude from type checking
+exclude = [
+    ".git",
+    ".venv",
+    "venv",
+    "__pycache__",
+    ".pytest_cache",
+    ".aws-sam",
+    "build",
+    "dist",
+]
+# Respect .gitignore files
+respect-ignore-files = true
+
+[tool.ty.terminal]
+# Treat warnings as errors for strict type checking
+error-on-warning = false
+# Use full output format
+output-format = "full"
