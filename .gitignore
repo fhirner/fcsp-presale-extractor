@@ -35,9 +35,5 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# UV package manager
-uv.lock
-.python-version
-
 # Ruff linter/formatter
 .ruff_cache/
