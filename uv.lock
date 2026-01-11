@@ -14,7 +14,7 @@ wheels = [
 [[package]]
 name = "fcsp-presale-extractor"
 version = "1.0.0"
-source = { editable = "." }
+source = { virtual = "." }
 dependencies = [
     { name = "feedparser" },
     { name = "icalendar" },
