@@ -184,7 +184,6 @@ def extract_presale_datetime(
             )
         )
 
-
     except (ValueError, OverflowError) as e:
         logger.error(f"Error parsing date from {title}: {e}")
         return None
@@ -219,7 +218,9 @@ def extract_presale_info(entry: dict, timezone: pytz.timezone) -> dict | None:
     logger.debug(f"Found Ticket-Infos entry: {title}")
 
     # Extract presale datetime
-    presale_dt = extract_presale_datetime(description, entry.get("published_parsed"), title, timezone)
+    presale_dt = extract_presale_datetime(
+        description, entry.get("published_parsed"), title, timezone
+    )
     if not presale_dt:
         return None
 
